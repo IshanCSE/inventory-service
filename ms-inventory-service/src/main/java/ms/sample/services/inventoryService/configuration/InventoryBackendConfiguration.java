@@ -10,7 +10,7 @@ import ms.sample.services.inventoryService.InventoryService;
 import ms.sample.services.inventoryService.InventoryServiceImpl;
 import ms.sample.services.inventoryService.Product;
 import ms.sample.services.inventoryService.commands.InventoryCommand;
-import ms.sample.services.inventoryService.eventHandlers.InventoryEventHandler;
+import ms.sample.services.inventoryService.eventHandlers.ProductWorkflow;
 
 @Configuration
 @EnableEventHandlers
@@ -27,8 +27,8 @@ public class InventoryBackendConfiguration {
 	}
 
 	@Bean
-	public InventoryEventHandler inventoryEventSubscriber() {
-		return new InventoryEventHandler();
+	public ProductWorkflow inventoryEventSubscriber() {
+		return new ProductWorkflow();
 	}
 
 }

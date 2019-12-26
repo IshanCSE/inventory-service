@@ -8,6 +8,7 @@ import io.eventuate.Event;
 import io.eventuate.ReflectiveMutableCommandProcessingAggregate;
 import ms.sample.services.inventoryService.commands.CreateProductCommand;
 import ms.sample.services.inventoryService.commands.InventoryCommand;
+import ms.sample.services.inventoryService.commands.UseProductCountCommand;
 import ms.sample.services.inventoryService.model.ProductAddedEvent;
 import ms.sample.services.inventoryService.model.ProductCreatedEvent;
 
@@ -19,7 +20,7 @@ public class Product extends ReflectiveMutableCommandProcessingAggregate<Product
 	public void apply(ProductAddedEvent event) {
 		this.setCount(count - event.getCount());
 	}
-	
+
 	public void apply(ProductCreatedEvent event) {
 		this.setProductName(event.getProductName());
 		this.setCount(event.getCount());
@@ -28,6 +29,10 @@ public class Product extends ReflectiveMutableCommandProcessingAggregate<Product
 
 	public List<Event> process(CreateProductCommand cmd) {
 		return events(new ProductCreatedEvent(cmd.getProductName(), cmd.getCount(), cmd.getProductValuel()));
+	}
+
+	public List<Event> process(UseProductCountCommand cmd) {
+		return events(new ProductAddedEvent(cmd.getCount(),cmd.getOrderId()));
 	}
 
 	public int getCount() {

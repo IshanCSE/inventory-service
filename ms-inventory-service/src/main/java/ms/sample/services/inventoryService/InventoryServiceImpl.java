@@ -1,10 +1,10 @@
 package ms.sample.services.inventoryService;
 
 import io.eventuate.EntityWithIdAndVersion;
+import io.eventuate.EntityWithMetadata;
 import io.eventuate.sync.AggregateRepository;
 import ms.sample.services.inventoryService.commands.CreateProductCommand;
 import ms.sample.services.inventoryService.commands.InventoryCommand;
-import ms.sample.services.inventoryService.commands.UseProductCountCommand;
 
 public class InventoryServiceImpl implements InventoryService {
 
@@ -19,9 +19,11 @@ public class InventoryServiceImpl implements InventoryService {
 		return  inventoryRepository.save(new CreateProductCommand(productName, count, productValue));
 	}
 	
-	public EntityWithIdAndVersion<Product> useProductCount(String productId, int count) {
-		EntityWithIdAndVersion<Product> product = inventoryRepository.update(productId, new UseProductCountCommand(count));
-		return product;
+	@Override
+	public EntityWithMetadata<Product> getProduct(String productId) {
+		System.out.println("Get detail request");
+		return inventoryRepository.find(productId);
 	}
+
 
 }

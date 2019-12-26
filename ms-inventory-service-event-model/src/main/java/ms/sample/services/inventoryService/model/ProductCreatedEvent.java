@@ -8,6 +8,10 @@ public class ProductCreatedEvent implements ProductEvent {
 	int count;
 	int productValue;
 
+	public ProductCreatedEvent() {
+		
+	}
+	
 	public ProductCreatedEvent(String productName, int count, int productValue) {
 		super();
 		this.productName = productName;

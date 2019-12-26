@@ -4,21 +4,20 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 public class ProductAddedEvent implements ProductEvent {
-	String productId;
 	int count;
+	String orderId;
 
-	public ProductAddedEvent(String productId, int count) {
-		super();
-		this.productId = productId;
+	public ProductAddedEvent() {
+
+	}
+
+	public ProductAddedEvent(int count, String orderId) {
 		this.count = count;
+		this.orderId = orderId;
 	}
 
-	public String getProductId() {
-		return productId;
-	}
-
-	public void setProductId(String productId) {
-		this.productId = productId;
+	public String getOrderId() {
+		return orderId;
 	}
 
 	public int getCount() {

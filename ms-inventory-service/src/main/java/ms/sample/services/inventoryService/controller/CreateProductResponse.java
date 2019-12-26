@@ -1,15 +1,14 @@
 package ms.sample.services.inventoryService.controller;
 
 public class CreateProductResponse {
-	private String orderId;
+	private String productId;
 
-	public CreateProductResponse(String orderId) {
-		super();
-		this.orderId = orderId;
+	public CreateProductResponse(String productId) {
+		this.productId = productId;
 	}
 
-	public String getOrderId() {
-		return orderId;
+	public String getProductId() {
+		return productId;
 	}
 
 }

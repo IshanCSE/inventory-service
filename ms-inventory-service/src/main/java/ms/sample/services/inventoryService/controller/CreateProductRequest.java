@@ -6,10 +6,9 @@ public class CreateProductRequest {
 	private String productName;
 
 	public CreateProductRequest() {
-		super();
 	}
+
 	public CreateProductRequest(int count, int productValue, String productName) {
-		super();
 		this.count = count;
 		this.productValue = productValue;
 		this.productName = productName;
@@ -26,6 +25,5 @@ public class CreateProductRequest {
 	public String getProductName() {
 		return productName;
 	}
-
 
 }
